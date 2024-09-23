@@ -24,7 +24,7 @@ class _PeopleListState extends State<PeopleList> {
           }
         }
         return Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             children: [
               ListTile(
@@ -32,8 +32,10 @@ class _PeopleListState extends State<PeopleList> {
                   _suggestions[i],
                   style: _biggerFont,
                 ),
+                tileColor: (i % 2 == 0) ? const Color.fromARGB(255, 188, 195, 199) : const Color.fromARGB(255, 255, 255, 255),
+                trailing: const Icon(Icons.delete),
               ),
-              const Divider(),
+              //const Divider(),
             ],
           ),
         );
