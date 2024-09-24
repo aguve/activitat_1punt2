@@ -12,6 +12,14 @@ class _PeopleListState extends State<PeopleList> {
   final _suggestions = <String>[];
   final _biggerFont = const TextStyle(fontSize: 18);
   final _randomNames = RandomNames(Zone.catalonia);
+
+  // mètode per eliminar un element de la llista
+  void _removeItem(int index) {
+    setState(() {
+      _suggestions.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -33,7 +41,12 @@ class _PeopleListState extends State<PeopleList> {
                   style: _biggerFont,
                 ),
                 tileColor: (i % 2 == 0) ? const Color.fromARGB(255, 188, 195, 199) : const Color.fromARGB(255, 255, 255, 255),
-                trailing: const Icon(Icons.delete),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () {
+                    _removeItem(i);
+                  },
+                ),
               ),
               //const Divider(),
             ],
